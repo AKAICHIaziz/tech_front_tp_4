@@ -2,7 +2,8 @@
 const path = require('path');
 const { DatabaseSync } = require('node:sqlite');
 
-const db = new DatabaseSync(path.join(__dirname, 'database.sqlite'));
+// DB_FILE=":memory:" permet aux tests d'utiliser une base temporaire
+const db = new DatabaseSync(process.env.DB_FILE || path.join(__dirname, 'database.sqlite'));
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (

@@ -51,7 +51,11 @@ app.delete('/api/users/:id', (req, res) => {
   res.status(204).end();
 });
 
-// Démarrage du serveur
-app.listen(PORT, () => {
-  console.log(`Serveur backend démarré sur http://localhost:${PORT}`);
-});
+// Démarrage du serveur (seulement si on lance ce fichier directement, pas dans les tests)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Serveur backend démarré sur http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;

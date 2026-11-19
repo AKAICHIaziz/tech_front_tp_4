@@ -58,6 +58,22 @@ npm start
 | http://localhost:3000/users | Liste Alice & Bob chargée depuis le backend |
 | http://localhost:5000/api/users | JSON brut des utilisateurs |
 
+## Tests
+
+Backend — test runner intégré de Node, base SQLite en mémoire (5 tests : GET, POST, validation 400, doublon 409, DELETE/404) :
+
+```powershell
+cd backend
+npm test
+```
+
+Frontend — Jest + React Testing Library, API mockée (7 tests : rendu de l'app, compteur, alerte du formulaire, `axios.post`, chargement de la liste, suppression, alerte d'erreur) :
+
+```powershell
+cd frontend
+npm test -- --watchAll=false
+```
+
 ## API
 
 | Méthode | Route | Description |
